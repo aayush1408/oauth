@@ -8,13 +8,20 @@ passport.use(
                 clientID:keys.google.clientID,
                 clientSecret:keys.google.clientSecret
 },(accessToken,refreshToken,profile,done)=>{
-//passport callback
-console.log(profile);
+//search user
+User.findOne({googleid:profile.id}).then((currentUser)=>{
+if(currentUser){
+console.log('currentUser');
+}
+else{
 new User({
     username:profile.displayName,
     googleid:profile.id
 }).save().then((newUser)=>{
     console.log(newUser);
-})
+});
+}
+});
+
 })
 )
