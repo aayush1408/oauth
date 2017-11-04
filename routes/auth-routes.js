@@ -9,8 +9,6 @@ router.get('/logout',(req,res)=>{
     res.send('logging out');
 });
 
-
-
 router.get('/google',(req,res)=>{
     //handle with pasport
     res.send('logging in with google');
